@@ -25,6 +25,18 @@ pub mod anchor_counter {
         instructions::decrement(ctx)
     }
 
+    pub fn addMovieReview(ctx: Context<AddMovieReview>, title: String, description: String, rating: u8) -> Result<()> {
+        instructions::add_movie_review(ctx, title, description, rating)
+    }
+
+    pub fn updateMovieReview(ctx: Context<UpdateMovieReview>, title: String, description: String, rating: u8) -> Result<()> {
+        instructions::update_movie_review(ctx, title, description, rating)
+    }
+
+    pub fn deleteMovieReview(ctx: Context<DeleteMovieReview>, title: String) -> Result<()> {
+        instructions::delete_movie_review(ctx, title)
+    }
+
 }
 
 
