@@ -4,6 +4,7 @@ use anchor_lang::prelude::*;
 
 pub mod instructions;
 pub mod state;
+pub mod errors;
 
 use instructions::*;
 
@@ -35,6 +36,10 @@ pub mod anchor_counter {
 
     pub fn deleteMovieReview(ctx: Context<DeleteMovieReview>, title: String) -> Result<()> {
         instructions::delete_movie_review(ctx, title)
+    }
+
+    pub fn initializeTokenMint(ctx: Context<InitializeMint>) -> Result<()> {
+        instructions::initialize_token_mint(ctx)
     }
 
 }

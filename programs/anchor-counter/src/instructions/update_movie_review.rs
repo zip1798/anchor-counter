@@ -1,7 +1,9 @@
 use {
     crate::state::MovieAccountState,
     anchor_lang::prelude::*,
+    crate::errors::*
 };
+
 
 #[derive(Accounts)]
 #[instruction(title: String, description: String)]
@@ -32,6 +34,8 @@ pub fn update_movie_review(
     msg!("Title {}", title);
     msg!("Desctiption {}", description);
     msg!("Rating {}", rating);
+
+    require!(rating >= 1 && rating <= 5, MovieReviewError::InvalidRating);
 
     let movie_review = &mut ctx.accounts.movie_review;
     movie_review.rating = rating;
